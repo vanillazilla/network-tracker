@@ -1,0 +1,25 @@
+# Build output and caches
+.gradle/
+build/
+.kotlin/
+out/
+
+# IDE files (can contain local paths)
+.idea/
+*.iml
+.vscode/
+
+# Exports from the app contain your network details (IPs, Wi-Fi name, MAC, ISP routers)
+network-report-*.txt
+network-samples-*.csv
+*.report.txt
+
+# Screenshots can show the same details; add sanitized ones deliberately with `git add -f`
+*.png
+*.jpg
+*.jpeg
+
+# OS files
+Thumbs.db
+Desktop.ini
+.DS_Store
