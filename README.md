@@ -47,6 +47,18 @@ spike to where it started.
 - **Events**: outages, recoveries, latency spikes, Wi-Fi roaming and weak-signal warnings.
 - **Network Info**: adapter, gateway, DNS, and Wi-Fi details (signal, band, channel, link rate)
   with signal history.
+- **Traffic**: see what's happening on your network.
+  - *Packets*: live packet list with a plain-English explanation of each packet, a full
+    field-by-field decode (Ethernet, ARP, IPv4/6, ICMP, TCP, UDP, DNS/mDNS/LLMNR, DHCP, TLS with
+    site names, QUIC, HTTP, SSDP, NTP, STUN, NetBIOS, LLDP…) and a hex view that highlights the
+    selected field. TCP analysis flags retransmissions, lost segments, duplicate ACKs, resets and
+    zero windows.
+  - *Conversations*, *Applications* (traffic per program), *Devices* (what's on your LAN),
+    *Protocols* (hierarchy breakdown), and *Connections* (every open socket and its program).
+  - Filter with plain words or `proto:dns app:chrome host:google port:443 dir:out len>1000 problems`,
+    right-click anything to filter by it, follow a stream, and open/save `.pcap` files for Wireshark.
+  - Packet capture needs [Npcap](https://npcap.com) on Windows (free; install with default
+    options). Connections, bandwidth and opening capture files work without it.
 - **Export**: text diagnostic report (to send to your ISP) and raw CSV of every measurement.
 - Light/dark theme; settings and custom targets are remembered.
 
@@ -57,9 +69,9 @@ server, which bypasses the OS cache.
 ## Privacy
 
 Everything stays on your machine. The app sends no telemetry, and only contacts the hosts it
-monitors (your router, ISP edge, DNS server, 1.1.1.1, 8.8.8.8 and targets you add). Exported
-reports and CSVs contain your network details (local IP, Wi-Fi name, MAC address, ISP routers), so
-review them before sharing.
+monitors (your router, ISP edge, DNS server, 1.1.1.1, 8.8.8.8 and targets you add); the Traffic tab
+also does reverse-DNS lookups to show host names. Exported reports, CSVs and especially saved
+`.pcap` captures contain your network details and traffic, so review them before sharing.
 
 ## License
 

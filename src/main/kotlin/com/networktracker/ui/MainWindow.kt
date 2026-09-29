@@ -71,6 +71,7 @@ class MainWindow(private val engine: MonitorEngine) : JFrame("Network Tracker") 
     private val table = TargetsTable(engine, state) { t -> tracePanel.traceTo(t.displayAddress); tabs.selectedIndex = 1 }
     private val eventsPanel = EventsPanel(engine)
     private val infoPanel = NetworkInfoPanel(engine)
+    private val trafficPanel = com.networktracker.ui.traffic.TrafficPanel(engine)
     private var unseenProblems = 0
 
     init {
@@ -114,6 +115,7 @@ class MainWindow(private val engine: MonitorEngine) : JFrame("Network Tracker") 
                 saveBounds()
                 engine.stop()
                 tracePanel.stop()
+                trafficPanel.shutdown()
                 System.exit(0)
             }
         })
@@ -218,6 +220,7 @@ class MainWindow(private val engine: MonitorEngine) : JFrame("Network Tracker") 
         tabs.addTab("Traceroute", tracePanel)
         tabs.addTab("Events", eventsPanel)
         tabs.addTab("Network Info", infoPanel)
+        tabs.addTab("Traffic", trafficPanel)
         tabs.addChangeListener {
             if (tabs.selectedIndex == 2) { unseenProblems = 0; tabs.setTitleAt(2, "Events") }
             if (tabs.selectedIndex == 3) infoPanel.repaintChart()

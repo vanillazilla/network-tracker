@@ -14,6 +14,11 @@ network-report-*.txt
 network-samples-*.csv
 *.report.txt
 
+# Packet captures contain your actual network traffic
+*.pcap
+*.pcapng
+*.cap
+
 # Screenshots can show the same details; add sanitized ones deliberately with `git add -f`
 *.png
 *.jpg
